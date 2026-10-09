@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche par nom{% endblock %}
+
+{% block body %}
+    <h1>Résultats de la recherche pour "{{ nom }}"</h1>
+
+    {% if etudiants is empty %}
+        <p>Aucun étudiant trouvé pour ce nom.</p>
+    {% else %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Niveau</th>
+                    <th>Date de naissance</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for etudiant in etudiants %}
+                    <tr>
+                        <td>{{ etudiant.id }}</td>
+                        <td>{{ etudiant.nom }}</td>
+                        <td>{{ etudiant.prenom }}</td>
+                        <td>{{ etudiant.niveau }}</td>
+                        <td>{{ etudiant.naissance|date('d/m/Y') }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+  
+{% endblock %}

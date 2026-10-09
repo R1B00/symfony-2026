@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire de{% endblock %}
+
+{% block body %}
+{{ form_start(form) }}
+{{ form_errors(form) }}
+{{ form_widget(form.nombre) }}
+{{ form_widget(form.calculer, { 'label': 'Calculer' }) }}
+{{ form_end(form) }}
+
+{% endblock %}

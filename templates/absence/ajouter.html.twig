@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une absence{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper ul { list-style-type: none; padding: 0; }
+    .example-wrapper li { margin: 10px 0; }
+    .example-wrapper a { text-decoration: none; color: #007bff; }
+    .example-wrapper a:hover { text-decoration: underline; }
+</style>
+<h1> Ajouter une absence</h1>
+{{ form_start(form) }}
+    {{ form_row(form.etudiant) }}
+    {{ form_row(form.date) }}
+    {{ form_row(form.matiere) }}
+    {{ form_row(form.justification) }}
+ 
+    <button type="submit">Ajouter l'absence</button>
+{{ form_end(form) }}
+  <h3><a href="{{ path('app_absence') }}">Accueil des absences</a></h2>
+{% endblock %}

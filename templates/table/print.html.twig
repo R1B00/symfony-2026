@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TableController!{% endblock %}
+
+{% block body %}
+
+<h1>Table de {{ nombre }} </h1>
+{% for i in 0..10 %}
+  <p>{{ nombre }} x {{ i }} = {{ table[i] }}</p>
+{% endfor %}
+
+{% endblock %}

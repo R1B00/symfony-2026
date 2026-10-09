@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rechercher absences{% endblock %}
+
+{% block body %}
+    <h1>Rechercher des absences</h1>
+
+    {{ form(form) }}
+
+    {% if formSubmitted %}
+        {% for etudiant in etudiants %}
+            <h2>{{ etudiant.prenom }} {{ etudiant.nom }}</h2>
+
+            {% if etudiant.absences is empty %}
+                <p>Aucune absence.</p>
+            {% else %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>Justification</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for absence in etudiant.absences %}
+                            <tr>
+                                <td>{{ absence.id }}</td>
+                                <td>{{ absence.date|date('Y-m-d') }}</td>
+                                <td>{{ absence.justification ? 'Oui' : 'Non' }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        {% else %}
+            <p>Aucun étudiant trouvé avec ce nom.</p>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
