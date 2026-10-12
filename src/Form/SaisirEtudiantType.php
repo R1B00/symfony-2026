@@ -8,13 +8,25 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class SaisirEtudiantType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
+            
+            
+            ->add('nom', TextType::class, [
+                'constraints' => [
+                    new Assert\NotBlank(message: "Le nom ne peut pas être vide. (formulaire)"),
+                    new Assert\Length(
+                        min: 3,
+                        minMessage: "Le nom doit contenir au moins {{ limit }} caractères. (formulaire)",
+                    ),
+                ],
+            ])
             ->add('prenom')
             ->add('naissance')
             ->add('niveau')

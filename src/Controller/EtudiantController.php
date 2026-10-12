@@ -118,7 +118,7 @@ use App\Form\SaisirEtudiantType;
 
     // Affichage du formulaire (si non soumis ou non valide)
     return $this->render('etudiant/saisir.html.twig', [
-        'form' => $form->createView(),
+        'form' => $form
     ]);
     } 
 
