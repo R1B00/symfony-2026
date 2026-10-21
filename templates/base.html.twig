@@ -19,6 +19,16 @@
         {% endif %}
     </head>
     <body>
+        <nav>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('app_admin') }}">Administration</a>
+            {% endif %}
+            {% if app.user %}
+                {{ app.user.userIdentifier }} , <a href="{{ logout_path() }}">Logout</a>
+            {% else %}
+                <a href="{{ path('app_login') }}">Connexion</a>
+            {% endif %}
+        </nav>
         {% block body %}{% endblock %}
     </body>
 </html>
